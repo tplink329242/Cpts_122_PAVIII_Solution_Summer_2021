@@ -1,24 +1,30 @@
-#include <SFML/Graphics.hpp>
+#pragma once
+#include "Test.hpp"
+
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+	//sf::RenderWindow window(sf::VideoMode(500, 500), "SFML works!");
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+	Test test;
+	//test.testPush();
+	//test.testPop();
+	//test.testDrawCard();
+	//test.testPlayCard();
+	test.testShuffle();
+	
+	/*while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+		window.clear();
+		window.display();
+	}*/
 
-    return 0;
+	return 0;
 }
