@@ -10,8 +10,8 @@ int main()
 	//test.testPush();
 	//test.testPop();
 	//test.testDrawCard();
-	//test.testPlayCard();
-	test.testShuffle();
+	test.testPlayCard();
+	//test.testShuffle();
 	
 	/*while (window.isOpen())
 	{
