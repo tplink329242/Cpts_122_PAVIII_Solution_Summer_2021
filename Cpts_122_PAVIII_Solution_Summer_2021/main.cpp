@@ -1,15 +1,15 @@
 #pragma once
-#include "Test.hpp"
-
+//#include "Test.hpp"
+#include "Game_Render.hpp"
 
 int main()
 {
 	//sf::RenderWindow window(sf::VideoMode(500, 500), "Cpts 122 PA8");
 
-	Test test;
+	//Test test;
 	//test.testPush();
 	//test.testPop();
-	test.testDrawCard();
+	//test.testDrawCard();
 	//test.testPlayCard();
 	//test.testShuffle();
 
@@ -32,6 +32,10 @@ int main()
 	//	window.display();
 	//}
 
+
+
+	StartGame();
+	
 	return 0;
 }
 

@@ -1,3 +1,4 @@
+#pragma once
 #include "Card.hpp"
 
 class CardNode

@@ -1,3 +1,4 @@
+#pragma once
 #include "Game.hpp"
 
 constexpr auto WINDOW_WIDTH = 1024;
@@ -9,6 +10,7 @@ constexpr auto FACE_DIAMONDS = 1;
 constexpr auto FACE_CLUBS = 2;
 constexpr auto FACE_SPADES = 3;
 constexpr auto MAX_NUM_FACE = 4;
+constexpr auto MAX_NUM_CARDS = 52;
 
 typedef enum
 {
@@ -21,6 +23,16 @@ typedef enum
 	Phase_Player_4,
 
 }Game_Phase;
+
+typedef enum
+{
+	Winner_Init,
+	Winner_Player_1,
+	Winner_Player_2,
+	Winner_Player_3,
+	Winner_Player_4,
+
+}Game_Winner;
 
 
 void StartGame()
@@ -36,6 +48,10 @@ void StartGame()
 	//4 players
 	Player p1(1), p2(2), p3(3), p4(4);
 
+	//init the deck and discard pie
+	CardStack deck;
+	CardStack discard_pie;
+
 	//define the current cards on the discard pie
 	Card* current_card = NULL;
 
@@ -43,7 +59,7 @@ void StartGame()
 	const sf::Vector2f cardSize = sf::Vector2f((0.111 * window.getSize().x), (0.222 * window.getSize().y));
 	const sf::Vector2f deckLocation = sf::Vector2f((0.259 * window.getSize().x), (0.333 * window.getSize().y));
 
-	//init the card
+	//init the cards
 	Card arr_card[52];
 	int num_card = 0;
 
@@ -113,16 +129,47 @@ void StartGame()
 			case 13:
 				current_suite = "King";
 				break;
-
-				
 			default:;
 			}
+
+			Card current_init_card(cardSize, deckLocation, current_face, current_suite, true);
+			arr_card[num_card] = current_init_card;
 			
 			num_card++;
 		}
 	}
 
+	//push cards into deck
+	for (int i = 0; i < MAX_NUM_CARDS; ++i)
+	{
+		deck.push(&arr_card[i]);
+	}
+
+	//shuffle
+	deck.shuffle();
+
+	//init game
+	Game my_game;
+
+	//each players will get 5 cards
+	my_game.dealCards(deck, discard_pie, p1, p2, p3, p4, window);
+
+	//set winner
+	Game_Winner game_winner = Winner_Init;
 	
+	//starting while loop
+	while (game_winner == Winner_Init)
+	{
+		for (int i = 1; i < 5; ++i)
+		{
+			if (i == 4)
+			{
+				i = 1;
+			std::cout << "A round!"<<std::endl;
+			}
+		}
+		
+	}
 }
 
 void start_game()
