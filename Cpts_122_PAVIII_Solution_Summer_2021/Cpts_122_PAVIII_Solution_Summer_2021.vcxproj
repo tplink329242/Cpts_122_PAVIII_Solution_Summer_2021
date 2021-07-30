@@ -148,6 +148,7 @@
     <ClInclude Include="CardNode.hpp" />
     <ClInclude Include="CardStack.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Game_Render.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="SFML\Audio.hpp" />
     <ClInclude Include="SFML\Audio\AlResource.hpp" />

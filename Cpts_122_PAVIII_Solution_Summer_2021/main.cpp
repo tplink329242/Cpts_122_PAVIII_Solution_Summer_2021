@@ -9,10 +9,9 @@ int main()
 	Test test;
 	//test.testPush();
 	//test.testPop();
-	//test.testDrawCard();
+	test.testDrawCard();
 	//test.testPlayCard();
 	//test.testShuffle();
-
 
 	
 	//while (window.isOpen())
@@ -35,3 +34,4 @@ int main()
 
 	return 0;
 }
+

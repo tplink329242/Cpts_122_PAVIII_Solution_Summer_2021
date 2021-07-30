@@ -327,6 +327,9 @@
     <ClInclude Include="Test.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Game_Render.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SFML\Audio\SoundFileFactory.inl">

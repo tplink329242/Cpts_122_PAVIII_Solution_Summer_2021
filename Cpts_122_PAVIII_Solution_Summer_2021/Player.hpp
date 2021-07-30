@@ -12,6 +12,7 @@ public:
 
     Card** getHand();
     int getNumCards();
+    int num_cards;
 
 
 private:
@@ -20,8 +21,7 @@ private:
     int player_id;
     int wins;
     Card** hand;
-    int num_cards;
-
+    
 };
 
 Card** Player::getHand()
