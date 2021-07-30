@@ -144,6 +144,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Card.hpp" />
+    <ClInclude Include="CardNode.hpp" />
+    <ClInclude Include="CardStack.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Player.hpp" />
     <ClInclude Include="SFML\Audio.hpp" />
     <ClInclude Include="SFML\Audio\AlResource.hpp" />
     <ClInclude Include="SFML\Audio\Export.hpp" />
@@ -242,6 +247,7 @@
     <ClInclude Include="SFML\Window\Window.hpp" />
     <ClInclude Include="SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="SFML\Window\WindowStyle.hpp" />
+    <ClInclude Include="Test.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\sfml-audio-d.pdb" />

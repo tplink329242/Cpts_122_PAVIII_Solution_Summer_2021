@@ -309,6 +309,24 @@
     <ClInclude Include="SFML\Window.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Card.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CardNode.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CardStack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SFML\Audio\SoundFileFactory.inl">
