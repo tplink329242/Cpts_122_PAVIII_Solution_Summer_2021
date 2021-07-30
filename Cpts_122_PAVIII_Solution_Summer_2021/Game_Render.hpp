@@ -154,6 +154,9 @@ void StartGame()
 	//each players will get 5 cards
 	my_game.dealCards(deck, discard_pie, p1, p2, p3, p4, window);
 
+	//define the players' card
+	Card** card_player_hold;
+
 	//set winner
 	Game_Winner game_winner = Winner_Init;
 	
@@ -167,6 +170,49 @@ void StartGame()
 				i = 1;
 			std::cout << "A round!"<<std::endl;
 			}
+			my_game.setCurrentPlayer(i);
+
+			//render cards
+			window.clear();
+			switch (i)
+			{
+				case 1:
+					card_player_hold = p1.getHand();
+					for (int j = 0; j < p1.num_cards; ++j)
+					{
+						window.draw(**card_player_hold);
+						card_player_hold++;
+					}
+				break;
+				case 2:
+					card_player_hold = p2.getHand();
+					for (int j = 0; j < p2.num_cards; ++j)
+					{
+						window.draw(**card_player_hold);
+						card_player_hold++;
+					}
+				break;
+				case 3:
+					card_player_hold = p3.getHand();
+					for (int j = 0; j < p3.num_cards; ++j)
+					{
+						window.draw(**card_player_hold);
+						card_player_hold++;
+					}
+				break;
+				case 4:
+					card_player_hold = p4.getHand();
+					for (int j = 0; j < p4.num_cards; ++j)
+					{
+						window.draw(**card_player_hold);
+						card_player_hold++;
+					}
+				break;
+				default:;
+			}
+
+
+			
 		}
 		
 	}
