@@ -183,11 +183,6 @@ void StartGame()
 		window.clear();
 
 
-		//peek the discard pie
-		current_card = discard_pie.peek();
-		my_game.setCurrentFace(current_card->getFace());
-		my_game.setCurrentSuite(current_card->getSuite());
-
 		//render player cards
 		//mouse event check
 		switch (game_phase)
@@ -216,6 +211,12 @@ void StartGame()
 								{
 									//we have clicked in card area
 									p1.play_card(&discard_pie, j + 1);
+									
+
+									//peek the discard pie
+									current_card = discard_pie.peek();
+									my_game.setCurrentFace(current_card->getFace());
+									my_game.setCurrentSuite(current_card->getSuite());
 								}
 							}
 						}
@@ -244,6 +245,11 @@ void StartGame()
 							{
 								//we have clicked in card area
 								p2.play_card(&discard_pie, j + 1);
+
+								//peek the discard pie
+								current_card = discard_pie.peek();
+								my_game.setCurrentFace(current_card->getFace());
+								my_game.setCurrentSuite(current_card->getSuite());
 							}
 						}
 					}
@@ -272,6 +278,12 @@ void StartGame()
 							{
 								//we have clicked in card area
 								p3.play_card(&discard_pie, j + 1);
+
+
+								//peek the discard pie
+								current_card = discard_pie.peek();
+								my_game.setCurrentFace(current_card->getFace());
+								my_game.setCurrentSuite(current_card->getSuite());
 							}
 						}
 					}
@@ -299,6 +311,12 @@ void StartGame()
 							{
 								//we have clicked in card area
 								p4.play_card(&discard_pie, j + 1);
+
+
+								//peek the discard pie
+								current_card = discard_pie.peek();
+								my_game.setCurrentFace(current_card->getFace());
+								my_game.setCurrentSuite(current_card->getSuite());
 							}
 						}
 					}
