@@ -71,6 +71,10 @@ void Game::dealCards(CardStack& deck, CardStack& discardPile, Player& p1, Player
 	}
 
 	//Add one Card to discardPile
-	p1.play_card(&discardPile, 5); //This is just to add card to discardPile.
-	p1.draw_card(&deck, window);
+	//p1.play_card(&discardPile, 5); //This is just to add card to discardPile.
+	//p1.draw_card(&deck, window);
+
+	Card* pTemp = deck.pop();
+	discardPile.push(pTemp);
+	
 }

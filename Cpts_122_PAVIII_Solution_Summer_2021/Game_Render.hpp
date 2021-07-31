@@ -90,7 +90,7 @@ void StartGame()
 			switch (j)
 			{
 			case 1:
-				current_suite = "One";
+				current_suite = "Ace";
 				break;
 			case 2:
 				current_suite = "Two";
@@ -144,9 +144,6 @@ void StartGame()
 		deck.push(&arr_card[i]);
 	}
 
-	//shuffle
-	deck.shuffle();
-
 	//init game
 	Game my_game;
 
@@ -155,7 +152,7 @@ void StartGame()
 
 	//define the players' card
 	Card** card_player_hold;
-	Card card_player_hold_single = **card_player_hold;
+	Card card_player_hold_single;
 
 	//card position and size
 	sf::Vector2f card_position;
@@ -187,22 +184,29 @@ void StartGame()
 		//mouse event check
 		switch (game_phase)
 		{
-			case Phase_Player_1
-				:
+			case Phase_Player_1:
 					card_player_hold = p1.getHand();
 					for (int j = 0; j < p1.num_cards; ++j)
 					{
 						//single card
 						card_player_hold_single = **card_player_hold;
 						window.draw(**card_player_hold);
+						card_player_hold++;
+					}
 
-						if (event.type == sf::Event::MouseButtonReleased)
+					//reset the pointer
+					card_player_hold = p1.getHand();
+					if (event.type == sf::Event::MouseButtonReleased)
+					{
+						
+						
+						for (int i = 0; i < p1.num_cards; ++i)
 						{
 							//get position and size
 							card_position = card_player_hold_single.getPosition();
 							card_size = card_player_hold_single.getSize();
 
-							mouse_position = sf::Mouse::getPosition(window);
+							mouse_position = sf::Mouse::getPosition();
 
 							//if position in card area
 							if (mouse_position.x > card_position.x && mouse_position.x < (card_position.x + card_size.x))
@@ -210,8 +214,7 @@ void StartGame()
 								if (mouse_position.y > card_position.y && mouse_position.y < (card_position.y + card_size.y))
 								{
 									//we have clicked in card area
-									p1.play_card(&discard_pie, j + 1);
-									
+									p1.play_card(&discard_pie, i + 1);
 
 									//peek the discard pie
 									current_card = discard_pie.peek();
@@ -219,9 +222,12 @@ void StartGame()
 									my_game.setCurrentSuite(current_card->getSuite());
 								}
 							}
+							card_player_hold++;
 						}
-						card_player_hold++;
+						
+						event.type = sf::Event::MouseMoved;
 					}
+			
 					break;
 
 			case Phase_Player_2:
@@ -333,7 +339,7 @@ void StartGame()
 		//if player play nothing should call draw card detected if current pie doesn't change call function
 		//then switch 1->2, 2->3, 3->4, 4->1
 
-		if (event.type == sf::Event::KeyPressed)		
+		if (event.type == sf::Event::KeyReleased)		
 		{
 			if (event.key.code == sf::Keyboard::C)
 			{

@@ -318,9 +318,6 @@
     <ClInclude Include="CardStack.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Game.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Player.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -328,6 +325,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Game_Render.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
