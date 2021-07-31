@@ -1,4 +1,3 @@
-#pragma once
 #include "Game.hpp"
 
 constexpr auto WINDOW_WIDTH = 1024;
@@ -156,66 +155,171 @@ void StartGame()
 
 	//define the players' card
 	Card** card_player_hold;
+	Card card_player_hold_single = **card_player_hold;
+
+	//card position and size
+	sf::Vector2f card_position;
+	sf::Vector2f card_size;
+
+	//mouse position
+	sf::Vector2i mouse_position;
 
 	//set winner
 	Game_Winner game_winner = Winner_Init;
-	
-	//starting while loop
-	while (game_winner == Winner_Init)
+
+	game_phase = Phase_Player_1;
+
+	//window while loop
+	while (window.isOpen())
 	{
-		for (int i = 1; i < 5; ++i)
+		sf::Event event;
+		while (window.pollEvent(event))
 		{
-			if (i == 4)
-			{
-				i = 1;
-			std::cout << "A round!"<<std::endl;
-			}
-			my_game.setCurrentPlayer(i);
-
-			//render cards
-			window.clear();
-			switch (i)
-			{
-				case 1:
-					card_player_hold = p1.getHand();
-					for (int j = 0; j < p1.num_cards; ++j)
-					{
-						window.draw(**card_player_hold);
-						card_player_hold++;
-					}
-				break;
-				case 2:
-					card_player_hold = p2.getHand();
-					for (int j = 0; j < p2.num_cards; ++j)
-					{
-						window.draw(**card_player_hold);
-						card_player_hold++;
-					}
-				break;
-				case 3:
-					card_player_hold = p3.getHand();
-					for (int j = 0; j < p3.num_cards; ++j)
-					{
-						window.draw(**card_player_hold);
-						card_player_hold++;
-					}
-				break;
-				case 4:
-					card_player_hold = p4.getHand();
-					for (int j = 0; j < p4.num_cards; ++j)
-					{
-						window.draw(**card_player_hold);
-						card_player_hold++;
-					}
-				break;
-				default:;
-			}
-
-
-			
+			if (event.type == sf::Event::Closed)
+				window.close();
 		}
+
+		//clear window
+		window.clear();
+
+
+		//peek the discard pie
+		current_card = discard_pie.peek();
+		my_game.setCurrentFace(current_card->getFace());
+		my_game.setCurrentSuite(current_card->getSuite());
+
+		//render player cards
+		//mouse event check
+		switch (game_phase)
+		{
+		case Phase_Player_1
+			:
+			card_player_hold = p1.getHand();
+			for (int j = 0; j < p1.num_cards; ++j)
+			{
+				//single card
+				card_player_hold_single = **card_player_hold;
+				window.draw(**card_player_hold);
+
+				if (event.type == sf::Event::MouseButtonReleased)
+				{
+					//get position and size
+					card_position = card_player_hold_single.getPosition();
+					card_size = card_player_hold_single.getSize();
+
+					mouse_position = sf::Mouse::getPosition(window);
+
+					//if position in card area
+					if (mouse_position.x > card_position.x && mouse_position.x < (card_position.x + card_size.x))
+					{
+						if (mouse_position.y > card_position.y && mouse_position.y < (card_position.y + card_size.y))
+						{
+							//we have clicked in card area
+							p1.play_card(&discard_pie, j + 1);					
+						}
+					}
+				}
+				card_player_hold++;
+			}
+			break;
+			
+		case Phase_Player_2:
+			card_player_hold = p2.getHand();
+			for (int j = 0; j < p2.num_cards; ++j)
+			{
+				window.draw(**card_player_hold);
+
+				if (event.type == sf::Event::MouseButtonReleased)
+				{
+					//get position and size
+					card_position = card_player_hold_single.getPosition();
+					card_size = card_player_hold_single.getSize();
+
+					mouse_position = sf::Mouse::getPosition(window);
+
+					//if position in card area
+					if (mouse_position.x > card_position.x && mouse_position.x < (card_position.x + card_size.x))
+					{
+						if (mouse_position.y > card_position.y && mouse_position.y < (card_position.y + card_size.y))
+						{
+							//we have clicked in card area
+							p2.play_card(&discard_pie, j + 1);
+						}
+					}
+				}
+				card_player_hold++;
+			}
+			break;
+			
+		case Phase_Player_3:
+			card_player_hold = p3.getHand();
+			for (int j = 0; j < p3.num_cards; ++j)
+			{
+				window.draw(**card_player_hold);
+
+				if (event.type == sf::Event::MouseButtonReleased)
+				{
+					//get position and size
+					card_position = card_player_hold_single.getPosition();
+					card_size = card_player_hold_single.getSize();
+
+					mouse_position = sf::Mouse::getPosition(window);
+
+					//if position in card area
+					if (mouse_position.x > card_position.x && mouse_position.x < (card_position.x + card_size.x))
+					{
+						if (mouse_position.y > card_position.y && mouse_position.y < (card_position.y + card_size.y))
+						{
+							//we have clicked in card area
+							p3.play_card(&discard_pie, j + 1);
+						}
+					}
+				}
+				card_player_hold++;
+			}
+			break;
+		case Phase_Player_4:
+			card_player_hold = p4.getHand();
+			for (int j = 0; j < p4.num_cards; ++j)
+			{
+				window.draw(**card_player_hold);
+
+				if (event.type == sf::Event::MouseButtonReleased)
+				{
+					//get position and size
+					card_position = card_player_hold_single.getPosition();
+					card_size = card_player_hold_single.getSize();
+
+					mouse_position = sf::Mouse::getPosition(window);
+
+					//if position in card area
+					if (mouse_position.x > card_position.x && mouse_position.x < (card_position.x + card_size.x))
+					{
+						if (mouse_position.y > card_position.y && mouse_position.y < (card_position.y + card_size.y))
+						{
+							//we have clicked in card area
+							p4.play_card(&discard_pie, j + 1);
+						}
+					}
+				}
+				card_player_hold++;
+			}
+			break;
+		default:;
+		}
+
+
+		//switch game phase
+		//if next button clicked
+		//win condition check
+		//if player play nothing should call draw card detected if current pie doesn't change call function
+		//then switch 1->2, 2->3, 3->4, 4->1
+
 		
+		//display window
+		window.display();
 	}
+
 }
 
 void start_game()

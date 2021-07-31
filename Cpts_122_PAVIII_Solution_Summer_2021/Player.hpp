@@ -1,4 +1,3 @@
-#pragma once
 #include "CardStack.hpp"
 
 class Player

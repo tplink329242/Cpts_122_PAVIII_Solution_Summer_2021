@@ -118,7 +118,7 @@
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\gbyi\Desktop\cpts_122\Cpts_122_PAVIII_Solution_Summer_2021\Cpts_122_PAVIII_Solution_Summer_2021;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gbyi\Desktop\cpts_122\cpts_122_github_demo\Cpts_122_PAVIII_Solution_Summer_2021\Cpts_122_PAVIII_Solution_Summer_2021;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
